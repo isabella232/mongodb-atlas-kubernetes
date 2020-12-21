@@ -1,0 +1,21 @@
+# Check
+
+name: Check
+
+on:
+  push:
+    branches:
+
+jobs:
+  check:
+    name: Check2
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Tag and push
+        uses: ./.github/actions/auto-push
+        with:
+          version: ${{ github.event.inputs.version }}

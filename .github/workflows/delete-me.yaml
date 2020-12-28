@@ -1,0 +1,21 @@
+name: test sign . Delete me
+
+on:
+  push:
+
+jobs:
+
+  test-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: test gh
+        uses: ./.github/actions/put-contents
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FILE_TO_COMMIT: ao-all-in-one-.tar.gz
+          DESTINATION_BRANCH: test/sign
